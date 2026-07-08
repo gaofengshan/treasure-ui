@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "VITE_USE_MOCK=true vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:real": "VITE_USE_MOCK=false vite"
   },
   "dependencies": {
     "@iconify/json": "^2.2.496",
