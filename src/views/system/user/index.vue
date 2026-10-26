@@ -179,8 +179,7 @@ async function handleSubmit() {
     }
     dialogVisible.value = false
     fetchData()
-  } catch (err) {
-    ElMessage.error('操作失败')
+  } catch {
   } finally {
     submitLoading.value = false
   }
@@ -191,7 +190,7 @@ async function handleDelete(row: SysUser) {
     await deleteUser(row.id!)
     ElMessage.success('删除成功')
     fetchData()
-  } catch { ElMessage.error('删除失败') }
+  } catch { /* 错误已由 Axios 拦截器统一提示 */ }
 }
 
 async function handleStatusChange(row: SysUser, val: boolean) {
@@ -200,7 +199,7 @@ async function handleStatusChange(row: SysUser, val: boolean) {
     await changeUserStatus(row.id!, val ? 1 : 0)
     row.status = val ? 1 : 0
     ElMessage.success('状态已更新')
-  } catch { ElMessage.error('状态更新失败') }
+  } catch { /* 错误已由 Axios 拦截器统一提示 */ }
   finally { row._statusLoading = false }
 }
 </script>
